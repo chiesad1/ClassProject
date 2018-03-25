@@ -2,9 +2,17 @@ package com.example.ryan.classproject;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Button;
+import android.widget.Toast;
+import android.view.View.OnClickListener;
+
 
 public class SecondActivity extends Activity {
+
+    private Button startButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,5 +31,22 @@ public class SecondActivity extends Activity {
         email.setText(a.getCharSequence("email"));
         phone.setText(a.getCharSequence("phone"));
         gender.setText(a.getCharSequence("gender"));
+
+        startButton = (Button) findViewById(R.id.start_button);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                longToast("The quiz is about to begin...");
+            }
+        });
+
+
     }
+    //Toast Method to display welcome message
+    public void longToast(CharSequence message) {
+        Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER,150, 150); //Sets the toast in the center of the screen
+        toast.show();//Displays toast message
+    }
+
 }
